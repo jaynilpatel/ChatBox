@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Friend Requests</title>
+    <!--<script src="./js/socket.io.js"></script>-->
+    <link href="css/friendRequests.css" rel="stylesheet" />
+    <script src="js/vue.js"></script>
+    <script src="js/jquery-1.11.0.min.js"></script>
+
+</head>
+<body >
+
+    <div id="requestsList">
+      <center>
+      <table>
+      <template v-for="info in items">
+        <tr v-bind:id="info.uname">
+        <template v-for="(val,key) in info">
+          <td v-if="key === 'uname'">@{{val}}</td>
+          <td v-else>{{val}}</td>
+        </template>
+        <td><input type="submit" value="Accept" name="Accept" v-on:click="accept(info.uname)"> |
+        <input type="submit" value="Reject" name="Reject" v-on:click="reject(info.uname)">  </td>
+      </tr>
+      </template>
+    </table>
+  </center>
+    </div>
+</body>
+<script src="js/friendRequests.js"></script>
+
+</html>

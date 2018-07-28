@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ChatBox</title>
+  <script src="./js/socket.io.js"></script>
+  <script src="js/vue.js"></script>
+  <link href="/styles.css" rel="stylesheet" />
+  <script src="js/jquery-1.11.0.min.js"></script>
+</head>
+<style>
+  .listHeader {
+    background-color: #117864;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+</style>
+
+<div id="chat-window">
+  <div class="listHeader" style="margin-left: 0px">
+    <input style="width:25px; height: 20px; padding:0px" type="image" src="/assets/back.png" width="25" height="25" onClick="window.history.go(-1)">
+    &nbsp;<span id="friendName">Name</span>
+    <div id="feedback"></div>
+  </div>
+
+  <section class="chat">
+    <center><div style="width: 100%; background-color:#E74C3C; color:#fff">Private Chat is On</div></center>
+    <div id="output"></div>
+  </section>
+
+  <section class="footer clearfix">
+
+    <!--
+    <button id="attachment" style="float: right" /><img src="assets/clip.png" width="38" height="38"></button>
+
+    <input style="float: right" id="myfile" type="file"/> -->
+    <button id="send" style="float: right" /><img src="assets/send.png" width="38" height="38"></button>
+    <div style="overflow: hidden;">
+      <input id="message" type="text" placeholder="Type a message" style="width: 100%;" />
+    </div>
+
+</div>
+
+</section>
+
+</div>
+<script src="./js/private.js"></script>
+
+
+</html>

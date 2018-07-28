@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ChatBox</title>
+    <script src="./js/socket.io.js"></script>
+    <script src="js/vue.js"></script>
+    <link href="/styles.css" rel="stylesheet" />
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/aes.js"></script>
+</head>
+<style>
+    .listHeader {
+        background-color: #117864;
+        padding: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .image-upload>input {
+        display: none;
+    }
+
+</style>
+
+<div id="chat-window">
+    <div class="listHeader" style="margin-left: 0px">
+        &nbsp; Global Group
+        <div id="feedback"></div>
+    </div>
+
+    <section class="chat" id="chat">
+        <template v-for="chat in items">
+          <span v-if="chat.sender == user"><p align="right" ><strong style="color:#008cb0">You </strong><br>{{chat.content}}</p></span>
+          <span v-else> <p><strong style="color:#008cb0"> @{{chat.sender}} </strong><br>{{chat.content}}</p></span>
+      </template>
+        <center>
+            <div style="width: 100%; background-color:#DCBB52; color:#fff">Now</div>
+        </center>
+        <div id="output"></div>
+    </section>
+
+    <section class="footer clearfix">
+
+        <!--<input id="uname" type="text" placeholder="Your Alias" />
+
+    <input id="message" type="text" placeholder="Type a Message" style="width: 100%;" />
+    <button id="send" style="float: right">Send</button>
+
+    <button id="attachment" style="float: right" /><img src="assets/clip.png" width="38" height="38"></button>
+
+    <input style="float: right" id="myfile" type="file"/> -->
+        <button id="send" style="float: right" /><img src="assets/send.png" width="38" height="38"></button>
+        <div class="image-upload" style="float: right">
+            <label for="myfile">
+        <img src="assets/clip.png"  width="38" height="38"/>
+      </label>
+            <input name="myfile" id="myfile" type="file" />
+        </div>
+        <div style="overflow: hidden;">
+            <input id="message" type="text" placeholder="Type a message" style="width: 100%;" />
+        </div>
+
+        </div>
+
+    </section>
+
+</div>
+<script src="./js/group.js"></script>
+
+
+</html>

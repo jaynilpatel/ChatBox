@@ -1,0 +1,34 @@
+<html>
+<script src="js/jquery-1.11.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+
+
+      $("#").click( function() {
+          var item = $('form input');
+          var username = {
+              user: u,
+              friend: item.val()
+          };
+
+
+          $.ajax({
+              type: 'POST',
+              url: '/addFriend',
+              data: username,
+              success: function(data) {
+                  console.log("Request Sent");
+              }
+          });
+      });
+
+    });
+
+  </script>
+<body>
+  <div id="Yes">
+    <input id="yes" type="submit" value="YES" class="">
+  </div>
+</body>
+
+</html>

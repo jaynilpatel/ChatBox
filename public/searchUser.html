@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/searchUser.css">
+    <title>Search Users</title>
+</head>
+<script src="js/jquery-1.11.0.min.js"></script>
+<style>
+
+
+</style>
+<script>
+    /*************Parse url for GET request********************/
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+    /*******************************/
+    var u = getUrlParameter('user');
+    var result;
+    $(document).ready(function() {
+
+
+        $("#sendRequestBtn").click( function() {
+            var item = $('form input');
+            var username = {
+                user: u,
+                friend: item.val()
+            };
+
+
+            $.ajax({
+                type: 'POST',
+                url: '/addFriend',
+                data: username,
+                success: function(data) {
+                    console.log("Request Sent");
+                }
+            });
+        });
+
+
+
+        $('form').on('submit', function() {
+
+            var item = $('form input');
+            var username = {
+                name: item.val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/search',
+                data: username,
+                success: function(data) {
+                    console.log(data);
+                    result = data;
+                    console.log("result:", result);
+
+
+                    var col = [];
+                    for (var i = 0; i < result.length; i++) {
+                        for (var key in result[i]) {
+                            if (col.indexOf(key) === -1) {
+                                col.push(key);
+                            }
+                        }
+                    }
+                    // CREATE DYNAMIC TABLE.
+                    var table = document.createElement("table");
+                    // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+                    var tr = table.insertRow(-1); // TABLE ROW.
+
+                    for (var i = 0; i < col.length; i++) {
+                        var th = document.createElement("th"); // TABLE HEADER.
+                        if (i == 0)
+                            th.innerHTML = "Username";
+                        else if (i == 1)
+                            th.innerHTML = "First Name";
+                        else
+                            th.innerHTML = "Last Name";
+                        tr.appendChild(th);
+                    }
+
+                    // ADD JSON DATA TO THE TABLE AS ROWS.
+                    var uname = result[0][col[0]]; //used for url GET request
+
+                    for (var i = 0; i < result.length; i++) {
+                        tr = table.insertRow(-1);
+                        for (var j = 0; j < col.length; j++) {
+                            var tabCell = tr.insertCell(-1);
+                            tabCell.innerHTML = result[i][col[j]];
+                        }
+                    }
+
+                    // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+                    var divContainer = document.getElementById("showData");
+                    divContainer.innerHTML = "";
+                    divContainer.appendChild(table);
+                    if (result != null) {
+                        //set Send Request Button
+                        var scrt_var = 10;
+                        var strLink = "addRequest.html?friend=" + uname;
+                        //document.getElementById("addRequest").setAttribute("href", strLink);
+                        document.getElementById("sendRequest").style.display = "inline";
+                    }
+                }
+            });
+
+            return false;
+
+        });
+
+    });
+
+</script>
+
+
+<body>
+    <center>
+        <form class="search" method="">
+            <input id="username" name="username" class="searchTerm" placeholder="Enter Username" />
+            <input class="searchButton" type="submit" value="Search" />
+        </form>
+        <div id="showData">
+
+        </div>
+        <div id="sendRequest" style="display: none;">
+            <!--<a id="addRequest">--><input id="sendRequestBtn" type="submit" value="Send Request" class="requestButton"><!--Send Request</button></a>-->
+        </div>
+    </center>
+</body>
+
+</html>

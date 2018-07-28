@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Contact List</title>
+  <!--<script src="./js/socket.io.js"></script>
+  <link href="/styles.css" rel="stylesheet" />-->
+  <script src="js/vue.js"></script>
+  <script src="js/jquery-1.11.0.min.js"></script>
+</head>
+<style>
+  a:link,a:visited{
+    color: white;
+    text-decoration: none;
+  }
+
+  a:active{
+    color: grey;
+  }
+
+  #list{
+    background-color: #fff;
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .listHeader{
+    background-color: #117864;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .listItems{
+    padding:0 0 10px 10px;
+  }
+  .offline , .online{
+    float: right;
+    padding-right: 20px;
+  }
+</style>
+<body style="background-color: #fff; margin:0px">
+    <div id="list" >
+              <div class="listHeader">
+              @{{user}}<input style="float:right" type="image" src="/assets/refresh.png" width="25" height="25"  onClick="window.location.reload()">
+              </div>
+
+              <template  v-for="friendsInfo in items">
+<!--'&with='+ friendsInfo.uname-->
+                <a href="#" v-on:click="startConversation(friendsInfo.uname)">
+                <div class="listItems"  >
+                  <h2  style="color:#000">{{friendsInfo.fname}} {{friendsInfo.lname}} &nbsp;<i style="color:#717D7E">(@{{friendsInfo.uname}})</i>
+                    <span v-if="friendsInfo.Socket == null" class="offline"><strong  style="color:#CB4335">offline</strong></span>
+                    <span v-else class="online"><strong  style="color:#28B463">online</strong></span>
+                  </h2>
+
+                </div>
+                </a>
+                <hr>
+              </template>
+
+    </div>
+</body>
+<script src="js/contactList.js"></script>
+</html>
