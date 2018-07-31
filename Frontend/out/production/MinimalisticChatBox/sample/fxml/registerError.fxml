@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #154360;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerOfFxml.registerErrorController">
+   <children>
+      <Label fx:id="errorName" layoutX="103.0" layoutY="139.0" stylesheets="@../css/module1Common.css" text="Error Name">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="back" layoutX="21.0" layoutY="495.0" onAction="#onBack" text="Back" textFill="WHITE" />
+      <Label layoutX="301.0" layoutY="14.0" prefHeight="47.0" prefWidth="199.0" text="Error Occured" textFill="WHITE">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="139.0" text="Error:" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

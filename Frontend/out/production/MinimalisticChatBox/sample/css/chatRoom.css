@@ -1,0 +1,29 @@
+.tab{
+    -fx-pref-width: 118;
+    -fx-pref-height: 65;
+    -fx-background-color: #117864;
+
+}
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: #117864;
+    -fx-font-family: Calibri;
+
+
+}
+
+.jfx-tab-pane{
+    -fx-background-color: #2a3639;
+}
+
+.jfx-text-field{
+    -fx-background-color: white;
+}
+.text-area{
+    -fx-font-size: 18;
+}
+
+.jfx-button{
+    -fx-font-weight: bold;
+}
+
+

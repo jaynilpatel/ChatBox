@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="850.0" prefWidth="475.0" stylesheets="@../css/chatRoom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllerOfFxml.chatRoomController">
+   <children>
+      <Pane prefHeight="848.0" prefWidth="475.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
+         <children>
+            <JFXTabPane prefHeight="848.0" prefWidth="483.0">
+               <tabs>
+                  <Tab text="Personal">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="787.0" prefWidth="530.0" AnchorPane.bottomAnchor="-4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <WebView fx:id="webViewPersonal" prefHeight="735.0" prefWidth="530.0" />
+                                    <HBox fillHeight="false" prefHeight="48.0" prefWidth="530.0">
+                                       <children>
+                                          <JFXButton fx:id="addFriend" buttonType="RAISED" onAction="#onAddFriend" prefHeight="49.0" prefWidth="265.0" ripplerFill="BLACK" style="-fx-background-color: #380140;" text="Add Friend" textFill="#f5f5f5">
+                                             </JFXButton>
+                                          <JFXButton fx:id="friendRequests" buttonType="RAISED" onAction="#onFriendRequests" prefHeight="49.0" prefWidth="266.0" ripplerFill="BLACK" style="-fx-background-color: #F20574;" text="Friend Requests" textFill="WHITE">
+
+                                             </JFXButton>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Group Chat">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <WebView fx:id="webViewGroup" layoutX="6.0" layoutY="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Private Chat">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <WebView fx:id="webViewPrivate" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0" />
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Settings">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <JFXButton fx:id="logOut" layoutX="-6.0" layoutY="8.0" onAction="#onLogout" prefHeight="52.0" prefWidth="483.0" text="Logout" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </JFXButton>
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

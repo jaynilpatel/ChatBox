@@ -1,0 +1,11 @@
+
+.label{
+    -fx-text-fill: #3498DB;
+}
+
+.text-field{
+    -fx-text-fill: white;
+}
+.text-area{
+    -fx-text-fill: white;
+}
