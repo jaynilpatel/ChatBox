@@ -15,12 +15,6 @@ var randomstring = require("randomstring");
 var multer = require('multer');
 var mongodb = require('mongodb');
 var fs = require('fs');
-var first = '';
-var last = '';
-var user = '';
-var pass = '';
-var email = '';
-var secret = "";
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -28,7 +22,8 @@ var transporter = nodemailer.createTransport({
     pass: 'professional@123'
   }
 });
-// App setup
+var first,last,user,pass,email,secret = '';
+// app setup
 var app = express();
 redirect(app);
 
@@ -176,6 +171,28 @@ io.on('connection', function(socket) {
 });
 
 /******************** HANDLE REGISTER EVENTS ************************/
+/**
+ * ISSUE -->: 
+ * The Registration process is followed by an OTP authentication sent by email.
+ * The OTP is stored in a global variable (named 'secret') and will be later compared with
+ * the user's response. But since variable 'secret' is global, if multiple users try to 
+ * register simultaneously there will be conflicts.
+ * 
+ * Let's say user A and user B both are simultaneously registering. First, user A has filled
+ * up the registration form and hits submit.
+ * Now the variable 'secret' will store the otp which is assigned to user A. Now user A is yet 
+ * to submit back the response. 
+ * 
+ * Now user B has submitted the registration form, so the contents of variable 'secret' will 
+ * be overwritten by the otp which is assigned to user B (since variable 'secret' is global).
+ * Thus user A will be not able to register with the otp which was sent to him/her.
+ * 
+ * The correct way is to store the OTP in the database temporarily for both A and B, and removing 
+ * it from the database after successfull registration.
+ * 
+ * 
+ * Feel free to implement it.
+ */
 net.createServer(function(socket) {
   var str = '';
   var echoMessage = ' ';
@@ -679,7 +696,7 @@ app.post('/loadMessages', urlencodedParser, function(req, res) {
 });
 
 
-/********************LOAD MESSAGES**********************/
+/********************LOAD GROUP MESSAGES**********************/
 app.post('/loadGroupMessages', urlencodedParser, function(req, res) {
 
   MongoClient.connect(url, function(err, db) {
@@ -702,7 +719,14 @@ app.post('/loadGroupMessages', urlencodedParser, function(req, res) {
   //res.json(data);
 });
 
-
+/*********************HANDLING FILE STORAGE *******************/
+/**
+ * ISSUE ->: 
+ * This will store the file on the server.
+ * It will continue to display the image till the user in logged in.
+ * Once the user logs out, I was not able to fetch and display the
+ * image to the user.
+ */
 var storage = multer.diskStorage({
   destination: function(req, file, callback) {
     callback(null, './Files');
@@ -728,7 +752,7 @@ app.post('/image', function(req, res) {
 
 /***********Catch and print errors*****************/
 process.on('uncaughtException', function(err) {
-  console.log('whoops! there was an error', err.stack);
+  console.log('OMG! there was an error', err.stack);
 });
 
 
