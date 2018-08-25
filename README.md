@@ -1,6 +1,6 @@
 # ChatBox
 
-The goal here was to build a standalone application as a medium for communication which can deliver like Facebook Messager, but for internal private network setup such as LAN.  Also, the objective here was to understand the different technologies that are needed for developing one of its kind. 
+The goal here was to build a standalone application as a medium for communication which can deliver like Facebook Messenger, but for internal private network setup such as LAN.  Also, the objective here was to understand the different technologies that are needed for developing it. 
 
 
 #### Key features
