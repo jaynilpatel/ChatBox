@@ -173,7 +173,9 @@ io.on('connection', function(socket) {
 /******************** HANDLE REGISTER EVENTS ************************/
 /**
  * ISSUE -->: 
- * The Registration process is followed by an OTP authentication sent by email.
+ * 
+ * Preface: The Registration process is followed by an OTP authentication sent by email.
+ * 
  * The OTP is stored in a global variable (named 'secret') and will be later compared with
  * the user's response. But since variable 'secret' is global, if multiple users try to 
  * register simultaneously there will be conflicts.
@@ -721,11 +723,14 @@ app.post('/loadGroupMessages', urlencodedParser, function(req, res) {
 
 /*********************HANDLING FILE STORAGE *******************/
 /**
- * ISSUE ->: 
- * This will store the file on the server.
- * It will continue to display the image till the user in logged in.
- * Once the user logs out, I was not able to fetch and display the
- * image to the user.
+ * ISSUE -->: 
+ * 
+ * Preface: This will store the file on the server.
+ * 
+ * First, this works only for global chat.
+ * Second, it will continue to display the image till the user in logged in.
+ * Once the user logout and then login, I was not able to fetch the 
+ * image from the server and display it back.
  */
 var storage = multer.diskStorage({
   destination: function(req, file, callback) {
