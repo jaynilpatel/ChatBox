@@ -1,8 +1,6 @@
 # ChatBox
-It can be easily adopted by an organization for their communication purposes, it will provides global chat feature so that multiple users can communicate over a single conversation while working over same project. This application uses the internal network setup such as LAN. All the message contents are encrypted end-to-end using AES-128 bit.
 
-This application will also helps users to share images with each other. 
-
+The goal here was to build a standalone application as a medium for communication which can deliver like Facebook Messager, but for internal private network setup such as LAN.  Also, the objective here was to understand the different technologies that are needed for developing one of its kind. 
 
 
 #### Key features
@@ -14,4 +12,4 @@ This application will also helps users to share images with each other.
 1. OTP authentication
 1. Encryption using AES-128 bit
 
-#### Technologies : JavaFX, NodeJs, MongoDB, VueJs
+#### Technologies : Jfoenix, NodeJs, MongoDB, VueJs
